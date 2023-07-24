@@ -1,35 +1,53 @@
-from flask import Flask, jsonify, request
+import pandas as pd
+from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
 from pymongo import MongoClient
+import os
 
-#Create an instance of Flask to pass __name__
+# Create a Flask instance
 app = Flask(__name__)
+CORS(app)
 
-# Establish the MongoDB connection
+# Load data from MongoDB database
 def get_mongo_connection():
     client = MongoClient('mongodb://localhost:27017/')
     return client
 
-# Connect to the 'sharks' database and created collection 'attacks'
 def get_sharks_collection():
     client = get_mongo_connection()
-    db = client.sharks_db  # Change 'sharks' to the appropriate database name
+    db = client.sharks_db
     collection = db.attacks
     return collection
 
+# Route to serve the html file
+@app.route('/dashboard.html')
+def dashboard():
+    return render_template('dashboard.html')
+
+# Route to get all data
 @app.route("/", methods=['GET'])
 def get_all_data():
     collection = get_sharks_collection()
     data = list(collection.find({}, {'_id': 0}))
     return jsonify(data)
 
-@app.route('/data', methods=['POST'])
-def add_data():
-    new_data = request.get_json()
+# Route to get shark attack data based on year and fatal filters
+@app.route("/shark_attacks", methods=['GET'])
+def get_shark_attacks():
+    # Get the query parameters from the request
+    year = request.args.get('year')
+    fatal = request.args.get('fatal')
+
+    # Fetch data from Mongo database and filter based on year and fatal
     collection = get_sharks_collection()
-    collection.insert_one(new_data)
+    query = {}
+    if year and year != "All":
+        query['Year'] = int(year)
+    if fatal and fatal != "All":
+        query['Fatal (Y/N)'] = fatal
+    data = list(collection.find(query, {'_id': 0}))
+
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
