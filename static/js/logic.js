@@ -1,37 +1,69 @@
-//Pearson Correlation
-
-function pearson(values) {
-  const n = values.length;
-
-  if (n == 0) return 0;
-
-  let meanX = 0;
-  let meanY = 0;
-  for (var i = 0; i < n; i++) {
-    meanX += values[i].x / n;
-    meanY += values[i].y / n;
+let request = new XMLHttpRequest();
+request.open("GET", "https://jsonplaceholder.typicode.com/users");
+request.send();
+request.onload = () => {
+  console.log(request);
+  if (request.status == 200) {
+    console.log(JSON.parse(request.response));
+  } else {
+    console.log("error ${request.status} ${request.statusText}");
   }
+};
+const config = {
+  type: "bar",
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Chart.js Bar Chart",
+      },
+    },
+  },
+};
+const DATA_COUNT = 7;
+const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
 
-  let num = 0;
-  let den1 = 0;
-  let den2 = 0;
-
-  for (var i = 0; i < n; i++) {
-    let dx = values[i].x - meanX;
-    let dy = values[i].y - meanY;
-    num += dx * dy;
-    den1 += dx * dx;
-    den2 += dy * dy;
-  }
-
-  const den = Math.sqrt(den1) * Math.sqrt(den2);
-
-  if (den == 0) return 0;
-
-  return num / den;
-}
-
-pearson([
-  { x: 0, y: 0 },
-  { x: 1, y: 1 },
-]);
+const labels = Utils.months({ count: 7 });
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Fully Rounded",
+      data: Utils.numbers(NUMBER_CFG),
+      borderColor: Utils.CHART_COLORS.red,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+      borderWidth: 2,
+      borderRadius: Number.MAX_VALUE,
+      borderSkipped: false,
+    },
+    {
+      label: "Small Radius",
+      data: Utils.numbers(NUMBER_CFG),
+      borderColor: Utils.CHART_COLORS.blue,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+  ],
+};
+const actions = [
+  {
+    name: "Randomize",
+    handler(chart) {
+      chart.data.datasets.forEach((dataset) => {
+        dataset.data = Utils.numbers({
+          count: chart.data.labels.length,
+          min: -100,
+          max: 100,
+        });
+      });
+      chart.update();
+    },
+  },
+];
