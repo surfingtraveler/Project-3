@@ -11,3 +11,8 @@ Shark attacks are always a possibility when venturing out into the ocean. Whethe
 3. HTML/ CSS
 4. Dataset from opendatasoft's Global Shark Attack-World
 
+### Instructions for accessing interactive map
+
+
+### Instructions for accessing charts
+
