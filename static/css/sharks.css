@@ -1,0 +1,53 @@
+/* Reset default styles */
+body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Set the map and container to take the full viewport height for appearances*/
+  #map,
+  .container {
+    height: 100vh;
+  }
+  
+  /* Style for the dropdowns */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  select {
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Center the dropdowns */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Set the map div's height */
+  #map {
+    height: 80vh;
+  }
+  
+  /* Style for the footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Add some margin below the footer */
+  main {
+    margin-bottom: 50px;
+  }
+  
+

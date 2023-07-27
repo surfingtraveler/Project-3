@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shark Attacks 2023 - 2018</title>
+  <!-- Include Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <!-- Include your custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sharks.css') }}" />
+</head>
+<body>
+  <h1>Shark Attacks Dashboard (2023 - 2018)</h1>
+
+  <!-- Dropdowns to filter data -->
+  <label for="year">Select Year:</label>
+  <select id="year">
+    <option value="All">All</option>
+    <!-- Add options for years from 2023 to 2018 -->
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+  </select>
+
+  <label for="fatal">Fatal:</label>
+  <select id="fatal">
+    <option value="All">All</option>
+    <option value="Y">Y</option>
+    <option value="N">N</option>
+  </select>
+
+  <!-- Div to display the map -->
+  <div id="map" style="height: 80vh;"></div>
+
+  <!-- Include Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <!-- Include your custom dashboard.js -->
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
+
+
