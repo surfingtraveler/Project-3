@@ -23,7 +23,8 @@ To access the Shark Attacks Dashboard Page, open the following file names in VS 
 
 Open a terminal window and make sure in directory where folders are located. 	
 	Enter: python mongodb_script.py
-	Emter: python dashboard.py
+	
+	Enter: python dashboard.py
 
 Optional: Open MongoDB Compass to view database.  
 
