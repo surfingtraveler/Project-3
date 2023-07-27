@@ -7,9 +7,11 @@ Shark attacks are always a possibility when venturing out into the ocean. Whethe
 
 ### Tools and Framework
 1. MongoDB database
-2. Javascript
-3. HTML/ CSS
-4. Dataset from opendatasoft's Global Shark Attack-World
+2. Python
+3. Flask Application
+4. Javascript
+5. HTML/ CSS
+6. Dataset from opendatasoft's Global Shark Attack-World
 
 ### Instructions for accessing interactive map
 (insert here)
