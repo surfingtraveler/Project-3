@@ -13,7 +13,7 @@ Shark attacks are always a possibility when venturing out into the ocean. Whethe
 5. HTML/ CSS
 6. Dataset from opendatasoft's Global Shark Attack-World
 
-### Instructions for accessing interactive map
+## Instructions for accessing interactive map
 To access the Shark Attacks Dashboard Page, open the following file names in VS Code:
 	mongodb_script.py
 	dashboard.py
@@ -42,5 +42,9 @@ Once page has finished loading, should see world map.  Can filter by Year, Fatal
 
 
 
-### Instructions for accessing charts
+## Instructions for accessing charts
 (insert here)
+
+
+### Resources
+
