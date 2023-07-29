@@ -4,15 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frequency Chart</title>
+    <title>Shark Attack Analytics</title>
   </head>
   <body>
-    <div style="width: 40%; margin: auto">
-      <h1>Shark Attacks by Gender</h1>
-      <canvas id="myChart"></canvas>
+    <div style="width: 60%; margin: auto">
+      <h1>Shark Attacks by Sex</h1>
+      <canvas id="myChart" style="width: 60%; max-width: 700px"></canvas>
     </div>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <div>
+      <h1>Shark Attack Frequencies</h1>
+      <canvas id="myCanvas" style="width: 60%; max-width: 700px"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.min.js"></script>
     <script src="static/js/logic.js"></script>
+    <script src="static/js/bubble.js"></script>
   </body>
 </html>

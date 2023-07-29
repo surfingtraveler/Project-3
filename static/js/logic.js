@@ -1,22 +1,8 @@
 // Function to create the chart using Chart.js
 function createChart(data) {
-  const years = [];
-  const maleAttacks = [];
-  const femaleAttacks = [];
-  const DATA_COUNT = 12;
-  const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 110 };
-
-  data.forEach((item) => {
-    years.push(item._id.Year);
-    if (item._id.Sex === "M") {
-      maleAttacks.push(item.count);
-      femaleAttacks.push(null);
-    } else {
-      maleAttacks.push(null);
-      femaleAttacks.push(item.count);
-    }
-  });
-
+  const years = data.map((item) => item._id);
+  const maleCounts = data.map((item) => item.male_count);
+  const femaleCounts = data.map((item) => item.female_count);
   const ctx = document.getElementById("myChart").getContext("2d");
   const myChart = new Chart(ctx, {
     type: "bar",
@@ -25,7 +11,7 @@ function createChart(data) {
       datasets: [
         {
           label: "Male Attacks",
-          data: maleAttacks,
+          data: maleCounts,
           backgroundColor: "rgb(75, 192, 192, 0.5)",
           borderColor: "rgba(75, 192, 192)",
           borderWidth: 2,
@@ -34,9 +20,9 @@ function createChart(data) {
         },
         {
           label: "Female Attacks",
-          data: femaleAttacks,
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
-          borderColor: "rgba(255, 99, 132, 1)",
+          data: femaleCounts,
+          backgroundColor: "rgb(153, 102, 255, 0.5)",
+          borderColor: "rgb(153, 102, 255)",
           borderWidth: 2,
           borderRadius: 5,
           borderSkipped: false,
@@ -45,6 +31,7 @@ function createChart(data) {
     },
     options: {
       responsive: true,
+      beginAtZero: true,
       plugins: {
         legend: {
           position: "top",
